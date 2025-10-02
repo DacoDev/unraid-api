@@ -1,0 +1,1887 @@
+{
+	"info": {
+		"_postman_id": "41bd7092-5e7b-4993-a232-082807364ce3",
+		"name": "Unraid",
+		"description": "Imported GraphQL Schema from Unraid /graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22877424",
+		"_collection_link": "https://www.postman.com/dacodev1/dacodev/collection/wjkyfbv/unraid?action=share&source=collection_link&creator=22877424"
+	},
+	"item": [
+		{
+			"name": "mutations",
+			"item": [
+				{
+					"name": "createNotification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createNotification ($input: NotificationData!) {\n    createNotification (input: $input) {\n        id\n        title\n        subject\n        description\n        importance\n        link\n        type\n        timestamp\n        formattedTimestamp\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"title\": \"\",\n    \"subject\": \"\",\n    \"description\": \"\",\n    \"importance\": \"\",\n    \"link\": \"\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteNotification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteNotification ($id: PrefixedID!, $type: NotificationType!) {\n    deleteNotification (id: $id, type: $type) {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{\n  \"id\": 0,\n  \"type\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteArchivedNotifications",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteArchivedNotifications {\n    deleteArchivedNotifications {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archiveNotification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation archiveNotification ($id: PrefixedID!) {\n    archiveNotification (id: $id) {\n        id\n        title\n        subject\n        description\n        importance\n        link\n        type\n        timestamp\n        formattedTimestamp\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archiveNotifications",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation archiveNotifications ($ids: [PrefixedID!]!) {\n    archiveNotifications (ids: $ids) {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{\n  \"ids\": [\n    0\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archiveAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation archiveAll ($importance: NotificationImportance) {\n    archiveAll (importance: $importance) {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{\n  \"importance\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unreadNotification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation unreadNotification ($id: PrefixedID!) {\n    unreadNotification (id: $id) {\n        id\n        title\n        subject\n        description\n        importance\n        link\n        type\n        timestamp\n        formattedTimestamp\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unarchiveNotifications",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation unarchiveNotifications ($ids: [PrefixedID!]!) {\n    unarchiveNotifications (ids: $ids) {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{\n  \"ids\": [\n    0\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unarchiveAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation unarchiveAll ($importance: NotificationImportance) {\n    unarchiveAll (importance: $importance) {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{\n  \"importance\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recalculateOverview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation recalculateOverview {\n    recalculateOverview {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "array",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation array ($input: ArrayStateInput!, $input1: ArrayDiskInput!, $input2: ArrayDiskInput!, $id: PrefixedID!, $id1: PrefixedID!, $id2: PrefixedID!) {\n    array {\n        setState (input: $input) {\n            id\n            state\n            capacity {\n                kilobytes {\n                    free\n                    used\n                    total\n                }\n                disks {\n                    free\n                    used\n                    total\n                }\n            }\n            boot {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parities {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parityCheckStatus {\n                date\n                duration\n                speed\n                status\n                errors\n                progress\n                correcting\n                paused\n                running\n            }\n            disks {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            caches {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n        }\n        addDiskToArray (input: $input1) {\n            id\n            state\n            capacity {\n                kilobytes {\n                    free\n                    used\n                    total\n                }\n                disks {\n                    free\n                    used\n                    total\n                }\n            }\n            boot {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parities {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parityCheckStatus {\n                date\n                duration\n                speed\n                status\n                errors\n                progress\n                correcting\n                paused\n                running\n            }\n            disks {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            caches {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n        }\n        removeDiskFromArray (input: $input2) {\n            id\n            state\n            capacity {\n                kilobytes {\n                    free\n                    used\n                    total\n                }\n                disks {\n                    free\n                    used\n                    total\n                }\n            }\n            boot {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parities {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            parityCheckStatus {\n                date\n                duration\n                speed\n                status\n                errors\n                progress\n                correcting\n                paused\n                running\n            }\n            disks {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n            caches {\n                id\n                idx\n                name\n                device\n                size\n                status\n                rotational\n                temp\n                numReads\n                numWrites\n                numErrors\n                fsSize\n                fsFree\n                fsUsed\n                exportable\n                type\n                warning\n                critical\n                fsType\n                comment\n                format\n                transport\n                color\n                isSpinning\n            }\n        }\n        mountArrayDisk (id: $id) {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        unmountArrayDisk (id: $id1) {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        clearArrayDiskStatistics (id: $id2)\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"desiredState\": \"\"\n  },\n  \"input1\": {\n    \"id\": 0,\n    \"slot\": 0\n  },\n  \"input2\": {\n    \"id\": 0,\n    \"slot\": 0\n  },\n  \"id\": 0,\n  \"id1\": 0,\n  \"id2\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "docker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation docker ($id: PrefixedID!, $id1: PrefixedID!) {\n    docker {\n        start (id: $id) {\n            id\n            names\n            image\n            imageId\n            command\n            created\n            ports {\n                ip\n                privatePort\n                publicPort\n                type\n            }\n            sizeRootFs\n            labels\n            state\n            status\n            hostConfig {\n                networkMode\n            }\n            networkSettings\n            mounts\n            autoStart\n        }\n        stop (id: $id1) {\n            id\n            names\n            image\n            imageId\n            command\n            created\n            ports {\n                ip\n                privatePort\n                publicPort\n                type\n            }\n            sizeRootFs\n            labels\n            state\n            status\n            hostConfig {\n                networkMode\n            }\n            networkSettings\n            mounts\n            autoStart\n        }\n    }\n}",
+								"variables": "{\n  \"id\": 0,\n  \"id1\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation vm ($id: PrefixedID!, $id1: PrefixedID!, $id2: PrefixedID!, $id3: PrefixedID!, $id4: PrefixedID!, $id5: PrefixedID!, $id6: PrefixedID!) {\n    vm {\n        start (id: $id)\n        stop (id: $id1)\n        pause (id: $id2)\n        resume (id: $id3)\n        forceStop (id: $id4)\n        reboot (id: $id5)\n        reset (id: $id6)\n    }\n}",
+								"variables": "{\n  \"id\": 0,\n  \"id1\": 0,\n  \"id2\": 0,\n  \"id3\": 0,\n  \"id4\": 0,\n  \"id5\": 0,\n  \"id6\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parityCheck",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation parityCheck ($correct: Boolean!) {\n    parityCheck {\n        start (correct: $correct)\n        pause\n        resume\n        cancel\n    }\n}",
+								"variables": "{\n  \"correct\": true\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apiKey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation apiKey ($input: CreateApiKeyInput!, $input1: AddRoleForApiKeyInput!, $input2: RemoveRoleFromApiKeyInput!, $input3: DeleteApiKeyInput!, $input4: UpdateApiKeyInput!) {\n    apiKey {\n        create (input: $input) {\n            id\n            key\n            name\n            description\n            roles\n            createdAt\n            permissions {\n                resource\n                actions\n            }\n        }\n        addRole (input: $input1)\n        removeRole (input: $input2)\n        delete (input: $input3)\n        update (input: $input4) {\n            id\n            key\n            name\n            description\n            roles\n            createdAt\n            permissions {\n                resource\n                actions\n            }\n        }\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"name\": \"\",\n    \"description\": \"\",\n    \"roles\": [\n      \"\"\n    ],\n    \"permissions\": {\n      \"resource\": \"\",\n      \"actions\": [\n        \"\"\n      ]\n    },\n    \"overwrite\": true\n  },\n  \"input1\": {\n    \"apiKeyId\": 0,\n    \"role\": \"\"\n  },\n  \"input2\": {\n    \"apiKeyId\": 0,\n    \"role\": \"\"\n  },\n  \"input3\": {\n    \"ids\": [\n      0\n    ]\n  },\n  \"input4\": {\n    \"id\": 0,\n    \"name\": \"\",\n    \"description\": \"\",\n    \"roles\": [\n      \"\"\n    ],\n    \"permissions\": {\n      \"resource\": \"\",\n      \"actions\": [\n        \"\"\n      ]\n    }\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rclone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation rclone ($input: CreateRCloneRemoteInput!, $input1: DeleteRCloneRemoteInput!) {\n    rclone {\n        createRCloneRemote (input: $input) {\n            name\n            type\n            parameters\n            config\n        }\n        deleteRCloneRemote (input: $input1)\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"name\": \"\",\n    \"type\": \"\",\n    \"parameters\": \"\"\n  },\n  \"input1\": {\n    \"name\": \"\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "initiateFlashBackup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation initiateFlashBackup ($input: InitiateFlashBackupInput!) {\n    initiateFlashBackup (input: $input) {\n        status\n        jobId\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"remoteName\": \"\",\n    \"sourcePath\": \"\",\n    \"destinationPath\": \"\",\n    \"options\": \"\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSettings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateSettings ($input: JSON!) {\n    updateSettings (input: $input) {\n        restartRequired\n        values\n        warnings\n    }\n}",
+								"variables": "{\n  \"input\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configureUps",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation configureUps ($config: UPSConfigInput!) {\n    configureUps (config: $config)\n}",
+								"variables": "{\n  \"config\": {\n    \"service\": \"\",\n    \"upsCable\": \"\",\n    \"customUpsCable\": \"\",\n    \"upsType\": \"\",\n    \"device\": \"\",\n    \"overrideUpsCapacity\": 0,\n    \"batteryLevel\": 0,\n    \"minutes\": 0,\n    \"timeout\": 0,\n    \"killUps\": \"\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPlugin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addPlugin ($input: PluginManagementInput!) {\n    addPlugin (input: $input)\n}",
+								"variables": "{\n  \"input\": {\n    \"names\": [\n      \"\"\n    ],\n    \"bundled\": true,\n    \"restart\": true\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removePlugin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation removePlugin ($input: PluginManagementInput!) {\n    removePlugin (input: $input)\n}",
+								"variables": "{\n  \"input\": {\n    \"names\": [\n      \"\"\n    ],\n    \"bundled\": true,\n    \"restart\": true\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateApiSettings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateApiSettings ($input: ConnectSettingsInput!) {\n    updateApiSettings (input: $input) {\n        accessType\n        forwardType\n        port\n    }\n}",
+								"variables": "{\n  \"input\": {\n    \"accessType\": \"\",\n    \"forwardType\": \"\",\n    \"port\": 0\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connectSignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation connectSignIn ($input: ConnectSignInInput!) {\n    connectSignIn (input: $input)\n}",
+								"variables": "{\n  \"input\": {\n    \"apiKey\": \"\",\n    \"userInfo\": {\n      \"preferred_username\": \"\",\n      \"email\": \"\",\n      \"avatar\": \"\"\n    }\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connectSignOut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation connectSignOut {\n    connectSignOut\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setupRemoteAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation setupRemoteAccess ($input: SetupRemoteAccessInput!) {\n    setupRemoteAccess (input: $input)\n}",
+								"variables": "{\n  \"input\": {\n    \"accessType\": \"\",\n    \"forwardType\": \"\",\n    \"port\": 0\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enableDynamicRemoteAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation enableDynamicRemoteAccess ($input: EnableDynamicRemoteAccessInput!) {\n    enableDynamicRemoteAccess (input: $input)\n}",
+								"variables": "{\n  \"input\": {\n    \"url\": {\n      \"type\": \"\",\n      \"name\": \"\",\n      \"ipv4\": \"\",\n      \"ipv6\": \"\"\n    },\n    \"enabled\": true\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Mutation type is a special type that is used to modify server-side  \ndata. Just like in queries, if the mutation field returns an object  \ntype, you can ask for nested fields. It can also contain multiple  \nfields. However, unlike queries, mutation fields run in series, one  \nafter the other."
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "apiKeys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query apiKeys {\n    apiKeys {\n        id\n        key\n        name\n        description\n        roles\n        createdAt\n        permissions {\n            resource\n            actions\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apiKey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query apiKey ($id: PrefixedID!) {\n    apiKey (id: $id) {\n        id\n        key\n        name\n        description\n        roles\n        createdAt\n        permissions {\n            resource\n            actions\n        }\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apiKeyPossibleRoles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query apiKeyPossibleRoles {\n    apiKeyPossibleRoles\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apiKeyPossiblePermissions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query apiKeyPossiblePermissions {\n    apiKeyPossiblePermissions {\n        resource\n        actions\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPermissionsForRoles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getPermissionsForRoles ($roles: [Role!]!) {\n    getPermissionsForRoles (roles: $roles) {\n        resource\n        actions\n    }\n}",
+								"variables": "{\n  \"roles\": [\n    \"\"\n  ]\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "previewEffectivePermissions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query previewEffectivePermissions ($roles: [Role!], $permissions: [AddPermissionInput!]) {\n    previewEffectivePermissions (roles: $roles, permissions: $permissions) {\n        resource\n        actions\n    }\n}",
+								"variables": "{\n  \"roles\": [\n    \"\"\n  ],\n  \"permissions\": {\n    \"resource\": \"\",\n    \"actions\": [\n      \"\"\n    ]\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAvailableAuthActions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getAvailableAuthActions {\n    getAvailableAuthActions\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getApiKeyCreationFormSchema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getApiKeyCreationFormSchema {\n    getApiKeyCreationFormSchema {\n        id\n        dataSchema\n        uiSchema\n        values\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query config {\n    config {\n        id\n        valid\n        error\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flash",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query flash {\n    flash {\n        id\n        guid\n        vendor\n        product\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query me {\n    me {\n        id\n        name\n        description\n        roles\n        permissions {\n            resource\n            actions\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notifications",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query notifications ($filter: NotificationFilter!) {\n    notifications {\n        id\n        overview {\n            unread {\n                info\n                warning\n                alert\n                total\n            }\n            archive {\n                info\n                warning\n                alert\n                total\n            }\n        }\n        list (filter: $filter) {\n            id\n            title\n            subject\n            description\n            importance\n            link\n            type\n            timestamp\n            formattedTimestamp\n        }\n    }\n}",
+								"variables": "{\n  \"filter\": {\n    \"importance\": \"\",\n    \"type\": \"\",\n    \"offset\": 0,\n    \"limit\": 0\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "online",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query online {\n    online\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "owner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query owner {\n    owner {\n        username\n        url\n        avatar\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query registration {\n    registration {\n        id\n        type\n        keyFile {\n            location\n            contents\n        }\n        state\n        expiration\n        updateExpiration\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "server",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query server {\n    server {\n        id\n        owner {\n            id\n            username\n            url\n            avatar\n        }\n        guid\n        apikey\n        name\n        status\n        wanip\n        lanip\n        localurl\n        remoteurl\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "servers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query servers {\n    servers {\n        id\n        owner {\n            id\n            username\n            url\n            avatar\n        }\n        guid\n        apikey\n        name\n        status\n        wanip\n        lanip\n        localurl\n        remoteurl\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query services {\n    services {\n        id\n        name\n        online\n        uptime {\n            timestamp\n        }\n        version\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shares",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query shares {\n    shares {\n        id\n        name\n        free\n        used\n        size\n        include\n        exclude\n        cache\n        nameOrig\n        comment\n        allocator\n        splitLevel\n        floor\n        cow\n        color\n        luksStatus\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vars",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query vars {\n    vars {\n        id\n        version\n        maxArraysz\n        maxCachesz\n        name\n        timeZone\n        comment\n        security\n        workgroup\n        domain\n        domainShort\n        hideDotFiles\n        localMaster\n        enableFruit\n        useNtp\n        ntpServer1\n        ntpServer2\n        ntpServer3\n        ntpServer4\n        domainLogin\n        sysModel\n        sysArraySlots\n        sysCacheSlots\n        sysFlashSlots\n        useSsl\n        port\n        portssl\n        localTld\n        bindMgt\n        useTelnet\n        porttelnet\n        useSsh\n        portssh\n        startPage\n        startArray\n        spindownDelay\n        queueDepth\n        spinupGroups\n        defaultFormat\n        defaultFsType\n        shutdownTimeout\n        luksKeyfile\n        pollAttributes\n        pollAttributesDefault\n        pollAttributesStatus\n        nrRequests\n        nrRequestsDefault\n        nrRequestsStatus\n        mdNumStripes\n        mdNumStripesDefault\n        mdNumStripesStatus\n        mdSyncWindow\n        mdSyncWindowDefault\n        mdSyncWindowStatus\n        mdSyncThresh\n        mdSyncThreshDefault\n        mdSyncThreshStatus\n        mdWriteMethod\n        mdWriteMethodDefault\n        mdWriteMethodStatus\n        shareDisk\n        shareUser\n        shareUserInclude\n        shareUserExclude\n        shareSmbEnabled\n        shareNfsEnabled\n        shareAfpEnabled\n        shareInitialOwner\n        shareInitialGroup\n        shareCacheEnabled\n        shareCacheFloor\n        shareMoverSchedule\n        shareMoverLogging\n        fuseRemember\n        fuseRememberDefault\n        fuseRememberStatus\n        fuseDirectio\n        fuseDirectioDefault\n        fuseDirectioStatus\n        shareAvahiEnabled\n        shareAvahiSmbName\n        shareAvahiSmbModel\n        shareAvahiAfpName\n        shareAvahiAfpModel\n        safeMode\n        startMode\n        configValid\n        configError\n        joinStatus\n        deviceCount\n        flashGuid\n        flashProduct\n        flashVendor\n        regCheck\n        regFile\n        regGuid\n        regTy\n        regState\n        regTo\n        regTm\n        regTm2\n        regGen\n        sbName\n        sbVersion\n        sbUpdated\n        sbEvents\n        sbState\n        sbClean\n        sbSynced\n        sbSyncErrs\n        sbSynced2\n        sbSyncExit\n        sbNumDisks\n        mdColor\n        mdNumDisks\n        mdNumDisabled\n        mdNumInvalid\n        mdNumMissing\n        mdNumNew\n        mdNumErased\n        mdResync\n        mdResyncCorr\n        mdResyncPos\n        mdResyncDb\n        mdResyncDt\n        mdResyncAction\n        mdResyncSize\n        mdState\n        mdVersion\n        cacheNumDevices\n        cacheSbNumDisks\n        fsState\n        fsProgress\n        fsCopyPrcnt\n        fsNumMounted\n        fsNumUnmountable\n        fsUnmountableMask\n        shareCount\n        shareSmbCount\n        shareNfsCount\n        shareAfpCount\n        shareMoverActive\n        csrfToken\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isInitialSetup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query isInitialSetup {\n    isInitialSetup\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vms",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query vms {\n    vms {\n        id\n        domains {\n            id\n            name\n            state\n            uuid\n        }\n        domain {\n            id\n            name\n            state\n            uuid\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parityHistory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query parityHistory {\n    parityHistory {\n        date\n        duration\n        speed\n        status\n        errors\n        progress\n        correcting\n        paused\n        running\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "array",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query array {\n    array {\n        id\n        state\n        capacity {\n            kilobytes {\n                free\n                used\n                total\n            }\n            disks {\n                free\n                used\n                total\n            }\n        }\n        boot {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        parities {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        parityCheckStatus {\n            date\n            duration\n            speed\n            status\n            errors\n            progress\n            correcting\n            paused\n            running\n        }\n        disks {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        caches {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query customization {\n    customization {\n        activationCode {\n            code\n            partnerName\n            partnerUrl\n            serverName\n            sysModel\n            comment\n            header\n            headermetacolor\n            background\n            showBannerGradient\n            theme\n        }\n        partnerInfo {\n            partnerName\n            hasPartnerLogo\n            partnerUrl\n            partnerLogoUrl\n        }\n        theme {\n            name\n            showBannerImage\n            showBannerGradient\n            showHeaderDescription\n            headerBackgroundColor\n            headerPrimaryTextColor\n            headerSecondaryTextColor\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publicPartnerInfo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query publicPartnerInfo {\n    publicPartnerInfo {\n        partnerName\n        hasPartnerLogo\n        partnerUrl\n        partnerLogoUrl\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publicTheme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query publicTheme {\n    publicTheme {\n        name\n        showBannerImage\n        showBannerGradient\n        showHeaderDescription\n        headerBackgroundColor\n        headerPrimaryTextColor\n        headerSecondaryTextColor\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "docker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query docker ($skipCache: Boolean!, $skipCache1: Boolean!) {\n    docker {\n        id\n        containers (skipCache: $skipCache) {\n            id\n            names\n            image\n            imageId\n            command\n            created\n            ports {\n                ip\n                privatePort\n                publicPort\n                type\n            }\n            sizeRootFs\n            labels\n            state\n            status\n            hostConfig {\n                networkMode\n            }\n            networkSettings\n            mounts\n            autoStart\n        }\n        networks (skipCache: $skipCache1) {\n            id\n            name\n            created\n            scope\n            driver\n            enableIPv6\n            ipam\n            internal\n            attachable\n            ingress\n            configFrom\n            configOnly\n            containers\n            options\n            labels\n        }\n    }\n}",
+								"variables": "{\n  \"skipCache\": true,\n  \"skipCache1\": true\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query disks {\n    disks {\n        id\n        device\n        type\n        name\n        vendor\n        size\n        bytesPerSector\n        totalCylinders\n        totalHeads\n        totalSectors\n        totalTracks\n        tracksPerCylinder\n        sectorsPerTrack\n        firmwareRevision\n        serialNum\n        interfaceType\n        smartStatus\n        temperature\n        partitions {\n            name\n            fsType\n            size\n        }\n        isSpinning\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query disk ($id: PrefixedID!) {\n    disk (id: $id) {\n        id\n        device\n        type\n        name\n        vendor\n        size\n        bytesPerSector\n        totalCylinders\n        totalHeads\n        totalSectors\n        totalTracks\n        tracksPerCylinder\n        sectorsPerTrack\n        firmwareRevision\n        serialNum\n        interfaceType\n        smartStatus\n        temperature\n        partitions {\n            name\n            fsType\n            size\n        }\n        isSpinning\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rclone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query rclone ($formOptions: RCloneConfigFormInput) {\n    rclone {\n        configForm (formOptions: $formOptions) {\n            id\n            dataSchema\n            uiSchema\n        }\n        drives {\n            name\n            options\n        }\n        remotes {\n            name\n            type\n            parameters\n            config\n        }\n    }\n}",
+								"variables": "{\n  \"formOptions\": {\n    \"providerType\": \"\",\n    \"showAdvanced\": true,\n    \"parameters\": \"\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query info {\n    info {\n        id\n        time\n        baseboard {\n            id\n            manufacturer\n            model\n            version\n            serial\n            assetTag\n            memMax\n            memSlots\n        }\n        cpu {\n            id\n            manufacturer\n            brand\n            vendor\n            family\n            model\n            stepping\n            revision\n            voltage\n            speed\n            speedmin\n            speedmax\n            threads\n            cores\n            processors\n            socket\n            cache\n            flags\n        }\n        devices {\n            id\n            gpu {\n                id\n                type\n                typeid\n                blacklisted\n                class\n                productid\n                vendorname\n            }\n            network {\n                id\n                iface\n                model\n                vendor\n                mac\n                virtual\n                speed\n                dhcp\n            }\n            pci {\n                id\n                type\n                typeid\n                vendorname\n                vendorid\n                productname\n                productid\n                blacklisted\n                class\n            }\n            usb {\n                id\n                name\n                bus\n                device\n            }\n        }\n        display {\n            id\n            case {\n                id\n                url\n                icon\n                error\n                base64\n            }\n            theme\n            unit\n            scale\n            tabs\n            resize\n            wwn\n            total\n            usage\n            text\n            warning\n            critical\n            hot\n            max\n            locale\n        }\n        machineId\n        memory {\n            id\n            layout {\n                id\n                size\n                bank\n                type\n                clockSpeed\n                partNum\n                serialNum\n                manufacturer\n                formFactor\n                voltageConfigured\n                voltageMin\n                voltageMax\n            }\n        }\n        os {\n            id\n            platform\n            distro\n            release\n            codename\n            kernel\n            arch\n            hostname\n            fqdn\n            build\n            servicepack\n            uptime\n            logofile\n            serial\n            uefi\n        }\n        system {\n            id\n            manufacturer\n            model\n            version\n            serial\n            uuid\n            sku\n            virtual\n        }\n        versions {\n            id\n            core {\n                unraid\n                api\n                kernel\n            }\n            packages {\n                openssl\n                node\n                npm\n                pm2\n                git\n                nginx\n                php\n                docker\n            }\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logFiles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query logFiles {\n    logFiles {\n        name\n        path\n        size\n        modifiedAt\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logFile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query logFile ($path: String!, $lines: Int, $startLine: Int) {\n    logFile (path: $path, lines: $lines, startLine: $startLine) {\n        path\n        content\n        totalLines\n        startLine\n    }\n}",
+								"variables": "{\n  \"path\": \"\",\n  \"lines\": 0,\n  \"startLine\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "settings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query settings {\n    settings {\n        id\n        unified {\n            id\n            dataSchema\n            uiSchema\n            values\n        }\n        sso {\n            id\n            oidcProviders {\n                id\n                name\n                clientId\n                clientSecret\n                issuer\n                authorizationEndpoint\n                tokenEndpoint\n                jwksUri\n                scopes\n                authorizationRules {\n                    claim\n                    operator\n                    value\n                }\n                authorizationRuleMode\n                buttonText\n                buttonIcon\n                buttonVariant\n                buttonStyle\n            }\n        }\n        api {\n            version\n            extraOrigins\n            sandbox\n            ssoSubIds\n            plugins\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isSSOEnabled",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query isSSOEnabled {\n    isSSOEnabled\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publicOidcProviders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query publicOidcProviders {\n    publicOidcProviders {\n        id\n        name\n        buttonText\n        buttonIcon\n        buttonVariant\n        buttonStyle\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oidcProviders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query oidcProviders {\n    oidcProviders {\n        id\n        name\n        clientId\n        clientSecret\n        issuer\n        authorizationEndpoint\n        tokenEndpoint\n        jwksUri\n        scopes\n        authorizationRules {\n            claim\n            operator\n            value\n        }\n        authorizationRuleMode\n        buttonText\n        buttonIcon\n        buttonVariant\n        buttonStyle\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oidcProvider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query oidcProvider ($id: PrefixedID!) {\n    oidcProvider (id: $id) {\n        id\n        name\n        clientId\n        clientSecret\n        issuer\n        authorizationEndpoint\n        tokenEndpoint\n        jwksUri\n        scopes\n        authorizationRules {\n            claim\n            operator\n            value\n        }\n        authorizationRuleMode\n        buttonText\n        buttonIcon\n        buttonVariant\n        buttonStyle\n    }\n}",
+								"variables": "{\n  \"id\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oidcConfiguration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query oidcConfiguration {\n    oidcConfiguration {\n        providers {\n            id\n            name\n            clientId\n            clientSecret\n            issuer\n            authorizationEndpoint\n            tokenEndpoint\n            jwksUri\n            scopes\n            authorizationRules {\n                claim\n                operator\n                value\n            }\n            authorizationRuleMode\n            buttonText\n            buttonIcon\n            buttonVariant\n            buttonStyle\n        }\n        defaultAllowedOrigins\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateOidcSession",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query validateOidcSession ($token: String!) {\n    validateOidcSession (token: $token) {\n        valid\n        username\n    }\n}",
+								"variables": "{\n  \"token\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query metrics {\n    metrics {\n        id\n        cpu {\n            id\n            percentTotal\n            cpus {\n                percentTotal\n                percentUser\n                percentSystem\n                percentNice\n                percentIdle\n                percentIrq\n                percentGuest\n                percentSteal\n            }\n        }\n        memory {\n            id\n            total\n            used\n            free\n            available\n            active\n            buffcache\n            percentTotal\n            swapTotal\n            swapUsed\n            swapFree\n            percentSwapTotal\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsDevices",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query upsDevices {\n    upsDevices {\n        id\n        name\n        model\n        status\n        battery {\n            chargeLevel\n            estimatedRuntime\n            health\n        }\n        power {\n            inputVoltage\n            outputVoltage\n            loadPercentage\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsDeviceById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query upsDeviceById ($id: String!) {\n    upsDeviceById (id: $id) {\n        id\n        name\n        model\n        status\n        battery {\n            chargeLevel\n            estimatedRuntime\n            health\n        }\n        power {\n            inputVoltage\n            outputVoltage\n            loadPercentage\n        }\n    }\n}",
+								"variables": "{\n  \"id\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsConfiguration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query upsConfiguration {\n    upsConfiguration {\n        service\n        upsCable\n        customUpsCable\n        upsType\n        device\n        overrideUpsCapacity\n        batteryLevel\n        minutes\n        timeout\n        killUps\n        nisIp\n        netServer\n        upsName\n        modelName\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "plugins",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query plugins {\n    plugins {\n        name\n        version\n        hasApiModule\n        hasCliModule\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remoteAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query remoteAccess {\n    remoteAccess {\n        accessType\n        forwardType\n        port\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connect",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query connect {\n    connect {\n        id\n        dynamicRemoteAccess {\n            enabledType\n            runningType\n            error\n        }\n        settings {\n            id\n            dataSchema\n            uiSchema\n            values {\n                accessType\n                forwardType\n                port\n            }\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "network",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query network {\n    network {\n        id\n        accessUrls {\n            type\n            name\n            ipv4\n            ipv6\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cloud",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query cloud {\n    cloud {\n        error\n        apiKey {\n            valid\n            error\n        }\n        relay {\n            status\n            timeout\n            error\n        }\n        minigraphql {\n            status\n            timeout\n            error\n        }\n        allowedOrigins\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Query type is a special type that defines the entry point of every  \nGraphQL query. Otherwise, the Query type is the same as any other  \nGraphQL object type, and its fields work exactly the same way."
+		},
+		{
+			"name": "subscriptions",
+			"item": [
+				{
+					"name": "notificationAdded",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription notificationAdded {\n    notificationAdded {\n        id\n        title\n        subject\n        description\n        importance\n        link\n        type\n        timestamp\n        formattedTimestamp\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notificationsOverview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription notificationsOverview {\n    notificationsOverview {\n        unread {\n            info\n            warning\n            alert\n            total\n        }\n        archive {\n            info\n            warning\n            alert\n            total\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ownerSubscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription ownerSubscription {\n    ownerSubscription {\n        username\n        url\n        avatar\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "serversSubscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription serversSubscription {\n    serversSubscription {\n        id\n        owner {\n            id\n            username\n            url\n            avatar\n        }\n        guid\n        apikey\n        name\n        status\n        wanip\n        lanip\n        localurl\n        remoteurl\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parityHistorySubscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription parityHistorySubscription {\n    parityHistorySubscription {\n        date\n        duration\n        speed\n        status\n        errors\n        progress\n        correcting\n        paused\n        running\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "arraySubscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription arraySubscription {\n    arraySubscription {\n        id\n        state\n        capacity {\n            kilobytes {\n                free\n                used\n                total\n            }\n            disks {\n                free\n                used\n                total\n            }\n        }\n        boot {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        parities {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        parityCheckStatus {\n            date\n            duration\n            speed\n            status\n            errors\n            progress\n            correcting\n            paused\n            running\n        }\n        disks {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n        caches {\n            id\n            idx\n            name\n            device\n            size\n            status\n            rotational\n            temp\n            numReads\n            numWrites\n            numErrors\n            fsSize\n            fsFree\n            fsUsed\n            exportable\n            type\n            warning\n            critical\n            fsType\n            comment\n            format\n            transport\n            color\n            isSpinning\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logFile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription logFile ($path: String!) {\n    logFile (path: $path) {\n        path\n        content\n        totalLines\n        startLine\n    }\n}",
+								"variables": "{\n  \"path\": \"\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "systemMetricsCpu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription systemMetricsCpu {\n    systemMetricsCpu {\n        id\n        percentTotal\n        cpus {\n            percentTotal\n            percentUser\n            percentSystem\n            percentNice\n            percentIdle\n            percentIrq\n            percentGuest\n            percentSteal\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "systemMetricsMemory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription systemMetricsMemory {\n    systemMetricsMemory {\n        id\n        total\n        used\n        free\n        available\n        active\n        buffcache\n        percentTotal\n        swapTotal\n        swapUsed\n        swapFree\n        percentSwapTotal\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsUpdates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription upsUpdates {\n    upsUpdates {\n        id\n        name\n        model\n        status\n        battery {\n            chargeLevel\n            estimatedRuntime\n            health\n        }\n        power {\n            inputVoltage\n            outputVoltage\n            loadPercentage\n        }\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "GraphQL subscriptions are a way to push data  \nfrom the server to the clients that choose to listen to real time  \nmessages from the server. Subscriptions are similar to queries in that  \nthey specify a set of fields to be delivered to the client, but instead  \nof immediately returning a single answer, a result is sent every time a  \nparticular event happens on the server."
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"description": "URL for the request (e.x. http://X.X.X.X/graphql)"
+		},
+		{
+			"key": "api_key",
+			"value": "",
+			"description": "API key generated at http://X.X.X.X/Settings/ManagementAccess"
+		}
+	]
+}
